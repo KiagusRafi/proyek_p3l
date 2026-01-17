@@ -1,5 +1,5 @@
 import Gambar from "../models/Gambar.js";
-import cloudinary from "../utils/cloudinary.js";
+import cloudinary from "../config/cloudinary.js";
 
 export const getGambar = async (_, res) => {
     try {

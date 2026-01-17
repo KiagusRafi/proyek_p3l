@@ -1,6 +1,6 @@
 import Berita from "../models/Berita.js";
 import Gambar from "../models/Gambar.js";
-import cloudinary from "../utils/cloudinary.js";
+import cloudinary from "../config/cloudinary.js";
 
 export async function getAllBerita(_, res){
     try {

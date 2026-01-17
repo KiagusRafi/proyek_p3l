@@ -4,6 +4,7 @@ import cors from "cors";
 
 import { connectDB } from "./config/db.js";
 import ciselRoutes from "./routes/ciselRoutes.js";
+import authRoutes from "./routes/authRoutes.js";
 import rateLimiter from "./middleware/rateLimiter.js"
 
 dotenv.config();
@@ -23,9 +24,10 @@ if (process.env.NODE_ENV !== "production"){
 app.use(express.json());
 app.use(rateLimiter);
 app.use("/api/sdncs1/", ciselRoutes);
+app.use("/api/auth/", authRoutes);
 
 connectDB().then(()=> {
-    app.listen(6767, () => {
+    app.listen(PORT, () => {
         console.log("Server started on PORT : ", PORT);
     });
 }); 
