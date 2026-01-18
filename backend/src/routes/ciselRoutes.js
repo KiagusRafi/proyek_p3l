@@ -3,6 +3,7 @@ import express from "express";
 import { getAllBerita, getBeritaById, createBerita, updateBerita, deleteBerita } from "../controllers/controllerBerita.js";
 import { getGambar, deleteGambar, uploadGambar, getGambarByProperty } from "../controllers/controllerGambar.js";
 import upload from "../middleware/multer.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -11,11 +12,11 @@ router.get("/", getAllBerita);
 router.get("/berita/:id", getBeritaById);
 
 //admin
-router.get("/admin/berita", getAllBerita);
-router.get("/admin/berita/:id", getBeritaById);
-router.post("/admin/berita",upload.single('image'), createBerita);
-router.put("/admin/berita/:id",upload.single('image'),updateBerita);
-router.delete("/admin/berita/:id", deleteBerita);
+router.get("/admin/berita",auth, getAllBerita);
+router.get("/admin/berita/:id",auth,  getBeritaById);
+router.post("/admin/berita",auth, upload.single('image'), createBerita);
+router.put("/admin/berita/:id",auth, upload.single('image'),updateBerita);
+router.delete("/admin/berita/:id",auth,  deleteBerita);
 
 // router.post("/admin/misc", upload.single('image'), uploadGambar);
 

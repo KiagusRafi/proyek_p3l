@@ -12,25 +12,6 @@ const Hero = () => {
   // const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false)
 
-  // // Fetch gambar dari backend
-  // useEffect(() => {
-  //   const fetchImages = async () => {
-  //     try {
-  //       const res = await api.get("/sdncs1/gambar"); // endpoint backend kamu
-  //       setImages(res.data); // asumsi res.data = [{url, picId}, ...]
-  //     } catch (error) {
-  //       if (error.response?.status == 404){
-  //         console.log("tidak ada gambar untuk carousel.", error)
-  //       } else {
-  //         console.error("Error fetching images:", error);
-  //       }
-  //     } finally {
-  //       setLoading(false)
-  //     }
-  //   };
-  //   fetchImages();
-  // }, []);
-
 
   // Auto slide setiap 3 detik
   useEffect(() => {

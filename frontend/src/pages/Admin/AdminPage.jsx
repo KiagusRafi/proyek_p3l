@@ -25,10 +25,10 @@ const AdminPage = () => {
           <BeritaList to="/admin/berita"/>
         </div>
         <SectionHeader text="Atur aset gambar"/>
-        <div>
+        {/* <div>
         <UploadGambar/>
-        {/* <GambarList/> */}
-        </div>
+        <GambarList/>
+        </div> */}
       </div>
     </div>
   );

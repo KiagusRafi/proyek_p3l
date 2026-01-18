@@ -13,6 +13,9 @@ import AdminPage from './pages/Admin/AdminPage.jsx';
 import Tes from './pages/Tes.jsx';
 import BeritaUpdatePage from './pages/Admin/BeritaUpdatePage.jsx';
 import CreateBeritaPage from './pages/Admin/CreateBeritaPage.jsx';
+import ProtectedAdminRoute from './components/ProtectedRoute.jsx';
+import Login from './pages/Admin/Login.jsx'
+import Register from './pages/Admin/Register.jsx'
 //<button onClick={()=> toast.error("congrats")} className="text-red-950 p-4 bg-pink-400 bg">lcick me</button><Toaster/>
 
 const App = () => {
@@ -27,12 +30,15 @@ const App = () => {
         <Route path='/profil' element={<ProfilPage/>}/>
         <Route path='/org' element={<StrukturOrg/>}/>
 
-        <Route path="/admin" element={<AdminPage/>}/>
-        <Route path="/admin/createberita" element={<CreateBeritaPage/>}/>
-        <Route path="/admin/berita" element={<AdminBerita />}/>
-        <Route path="/admin/berita/:id" element={<BeritaUpdatePage />}/>
-        <Route path="/admin/login"/>
-        <Route path="/tes" element={<Tes />} />
+        <Route element={<ProtectedAdminRoute/>}>
+          <Route path="/admin" element={<AdminPage/>}/>
+          <Route path="/admin/createberita" element={<CreateBeritaPage/>}/>
+          <Route path="/admin/berita" element={<AdminBerita />}/>
+          <Route path="/admin/berita/:id" element={<BeritaUpdatePage />}/>
+        </Route>
+        <Route path="/admin/login" element={<Login/>}/>
+        <Route path="/admin/register" element={<Register/>}/>
+        {/* <Route path="/tes" element={<Tes />} /> */}
       </Routes>
     </div>
   );
