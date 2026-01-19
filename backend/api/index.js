@@ -36,12 +36,12 @@ app.use("/api/auth/", authRoutes);
 // kalo di sisi production :
 if (process.env.NODE_ENV === "production") {
     //deploy
-    app.use(express.static(path.join(__dirname,"../frontend/dist")))
+    app.use(express.static(path.join(__dirname,"../../frontend/dist")))
     // artinya : naik ke root, cari dist, serve dist sebagai aset static
 
     // kalo ada request get ke route selain di notesRoutes, kasih index.html punya FE :
     app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"))
+        res.sendFile(path.join(__dirname, "../../frontend", "dist", "index.html"))
     })
 }
 
