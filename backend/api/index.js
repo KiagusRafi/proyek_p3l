@@ -4,10 +4,10 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from 'path';
 
-import { connectDB } from "./config/db.js";
-import ciselRoutes from "./routes/ciselRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
-import rateLimiter from "./middleware/rateLimiter.js"
+import { connectDB } from "../src/config/db.js";
+import ciselRoutes from "../src/routes/ciselRoutes.js";
+import authRoutes from "../src/routes/authRoutes.js";
+import rateLimiter from "../src/middleware/rateLimiter.js"
 
 dotenv.config();
 
