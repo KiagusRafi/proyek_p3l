@@ -108,33 +108,6 @@ export const deleteBerita = async (req, res) => {
     }
 };
 
-// export const uploadGambar = async (req, res) => {
-//     try {
-//         // pastikan ada file dari multer
-//         if (!req.file) {
-//         return res.status(400).json({
-//             success: false,
-//             message: "No file uploaded"
-//         });
-//         }
-
-//         // upload ke Cloudinary
-//         const result = await cloudinary.uploader.upload(req.file.path);
-
-//         // kirim response ke client
-//         res.status(200).json({
-//             success: true,
-//             message: "thumbnail uploaded.",
-//             data: result   // berisi secure_url, public_id, dll
-//         });
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({
-//         success: false,
-//         message: "Error uploading image"
-//         });
-//     }
-// };
 
 
 

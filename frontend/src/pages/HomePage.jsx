@@ -3,6 +3,7 @@ import BeritaList from '../components/BeritaList.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import Hero from '../components/Hero.jsx';
 import Header from '../components/Header.jsx';
+import UploadGambar from '../components/UploadGambar.jsx'
 
 
 const HomePage = () => {

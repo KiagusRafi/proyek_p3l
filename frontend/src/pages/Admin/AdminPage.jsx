@@ -1,18 +1,8 @@
-import React from 'react'
-import { useState, useEffect } from "react";
-import { useNavigate, Link } from 'react-router';
-import toast from 'react-hot-toast';
+import { Link } from 'react-router';
 import { CirclePlus } from 'lucide-react';
 
-import api from '../../lib/axios';
-import BeritaCard from '../../components/BeritaCard';
-import CreateBeritaPage from './CreateBeritaPage';
-import { useDeleteItem, useFetchTable } from '../../lib/utils';
 import BeritaList from '../../components/BeritaList';
-import GenericImageCard from '../../components/GenericImageCard';
 import SectionHeader from '../../components/SectionHeader';
-import UploadGambar from '../../components/UploadGambar';
-import GambarList from '../../components/GambarList';
 
 const AdminPage = () => {
 
@@ -24,11 +14,6 @@ const AdminPage = () => {
         <div className='p-4'>
           <BeritaList to="/admin/berita"/>
         </div>
-        <SectionHeader text="Atur aset gambar"/>
-        {/* <div>
-        <UploadGambar/>
-        <GambarList/>
-        </div> */}
       </div>
     </div>
   );

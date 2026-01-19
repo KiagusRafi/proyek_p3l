@@ -3,6 +3,8 @@ import SectionHeader from '../components/SectionHeader'
 import Header from '../components/Header'
 import ImageGallery from '../components/ImageGallery'
 
+import staff from '../assets/org/misc/Group 22.png'
+
 const StrukturOrg = () => {
   const allImageModules = import.meta.glob('/src/assets/org/**/*.{png,jpg,jpeg,svg}', { eager: true });
 
@@ -33,7 +35,7 @@ const StrukturOrg = () => {
         <SectionHeader text="Guru"/>
         <ImageGallery images={guru}/>
         <SectionHeader text="Staff"/>
-        <img src='\src\assets\org\misc\Group 22.png' alt='staff'/>
+        <img src={staff} alt='staff'/>
     </div>
   )
 }

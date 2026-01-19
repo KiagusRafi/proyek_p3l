@@ -1,7 +1,8 @@
 // client/src/components/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import axios from 'axios';
+import toast from 'react-hot-toast'
+
 import { useAuth } from '../../AuthContext.jsx';
 import api from '../../lib/axios.js';
 
@@ -32,9 +33,9 @@ const Login = () => {
                 password
             });
             setAuthUser(formData);
-            navigate('/admin');
             // Set success message
             setMessage('Logged in successfully');
+            toast.success('Login berhasil', navigate('/admin'))
         } catch (err) {
             console.error(err.response.data);
             // Set error message
@@ -43,24 +44,26 @@ const Login = () => {
     };
 
     return (
-        <div className="auth-form">
-            <h2>Login</h2>
+        <div className="auth-form w-[300px] mx-auto p-[20px] border border-[#ccc] rounded-[5px]">
+            <h2 className='mt-0'>Login</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" 
                        placeholder="Username" 
                        name="username" 
                        value={username} 
                        onChange={onChange} 
-                       required />
+                       required
+                       className='w-full mb-[10px] p-[8px] rounded-[3px] border border-[#ccc]' />
                 <input type="password" 
                        placeholder="Password" 
                        name="password" 
                        value={password} 
                        onChange={onChange} 
-                       required />
-                <button type="submit">Login</button>
+                       required 
+                       className='w-full mb-[10px] p-[8px] rounded-[3px] border border-[#ccc]'/>
+                <button type="submit" className='w-full p-[10px] bg-[#007bff] text-[#fff] border-none rounded-[3px] cursor-pointer hover:bg-[#0056b3]'>Login</button>
             </form>
-            <p className="message">{message}</p>
+            <p className="message mt-[10px] text-green-600">{message}</p>
         </div>
     );
 };

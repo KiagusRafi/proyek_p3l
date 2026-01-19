@@ -16,6 +16,7 @@ import CreateBeritaPage from './pages/Admin/CreateBeritaPage.jsx';
 import ProtectedAdminRoute from './components/ProtectedRoute.jsx';
 import Login from './pages/Admin/Login.jsx'
 import Register from './pages/Admin/Register.jsx'
+import NoContent from './components/NoContent.jsx';
 //<button onClick={()=> toast.error("congrats")} className="text-red-950 p-4 bg-pink-400 bg">lcick me</button><Toaster/>
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/akademik" element={<Akademik/>}/>
         <Route path='/profil' element={<ProfilPage/>}/>
         <Route path='/org' element={<StrukturOrg/>}/>
+        <Route path='/kontak' element={<NoContent/>}/>
 
         <Route element={<ProtectedAdminRoute/>}>
           <Route path="/admin" element={<AdminPage/>}/>

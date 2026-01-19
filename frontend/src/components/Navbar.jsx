@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router"
+import toast from 'react-hot-toast'
 
 const Navbar = () => {
   return (
