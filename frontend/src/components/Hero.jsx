@@ -33,7 +33,7 @@ const Hero = () => {
 
   return (
     <div
-  className="hero min-h-[30vh]"
+  className="hero min-h-[30vh] my-2"
   style={{
     backgroundImage: `url(${images[currentIndex].url})`,
   }}>

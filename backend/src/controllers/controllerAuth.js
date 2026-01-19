@@ -7,8 +7,9 @@ import config from '../config/config.js'; // Perhatikan penambahan ekstensi .js
 export const register = async (req, res) => {
     const { username, password } = req.body;
     try {
-        let user = await User.findOne({ username });
-        if (user) return res.status(400).json({ msg: 'User sudah ada' });
+        // let user = await User.findOne({ username });
+        let user = await User.exists({});
+        if (user) return res.status(400).json({ msg: 'seorang admin sudah terdaftar' });
 
         user = new User({ username, password });
         const salt = await bcrypt.genSalt(10);
