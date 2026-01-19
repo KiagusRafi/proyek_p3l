@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 6767;
-const __dirname = path.resolve() // bakal ngasih "source for the backend"
+// const __dirname = path.resolve()
 
 
 if (process.env.NODE_ENV !== "production"){
@@ -34,16 +34,16 @@ app.use("/api/sdncs1/", ciselRoutes);
 app.use("/api/auth/", authRoutes);
 
 // kalo di sisi production :
-if (process.env.NODE_ENV === "production") {
-    //deploy
-    app.use(express.static(path.join(__dirname,"../../frontend/dist")))
-    // artinya : naik ke root, cari dist, serve dist sebagai aset static
+// if (process.env.NODE_ENV === "production") {
+//     //deploy
+//     app.use(express.static(path.join(__dirname,"../../frontend/dist")))
+//     // artinya : naik ke root, cari dist, serve dist sebagai aset static
 
-    // kalo ada request get ke route selain di notesRoutes, kasih index.html punya FE :
-    app.get("*", (req, res) => {
-        res.sendFile(path.join(__dirname, "../../frontend", "dist", "index.html"))
-    })
-}
+//     // kalo ada request get ke route selain di notesRoutes, kasih index.html punya FE :
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.join(__dirname, "../../frontend", "dist", "index.html"))
+//     })
+// }
 
 connectDB().then(()=> {
     app.listen(PORT, () => {
