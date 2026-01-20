@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 6767;
 // const __dirname = path.resolve()
 
 const allowedOrigin = process.env.NODE_ENV === "production" 
-    ? "https://p3lbackend.vercel.app"  // URL asli saat sudah live
+    ? "https://p3lfrontend.vercel.app"  // URL asli saat sudah live
     : "http://localhost:5173";        // URL saat coding (development)
 
 app.use(
