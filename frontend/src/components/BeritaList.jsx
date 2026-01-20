@@ -14,39 +14,43 @@ const BeritaList = ({ to }) => {
     const { deleteItem, loading: deleteLoading, error: deleteError } = useDeleteItem("/sdncs1/admin/berita");
     const [isRateLimited, setIsRateLimited] = useState(false);
 
-    if (fetchError || deleteError){
-      if (error.response?.status == 429){
-        setIsRateLimited(true)
-      }
-    }
+    // Gunakan useEffect untuk menangani side-effect seperti rate limiting
+    useEffect(() => {
+        if (fetchError?.status === 429 || deleteError?.status === 429) {
+            setIsRateLimited(true);
+        }
+    }, [fetchError, deleteError]);
 
     const handleDelete = async (id) => {
-      const ok = await deleteItem(id);
-      if (ok) setBerita((prev) => prev.filter((img) => img._id !== id));
+        const ok = await deleteItem(id);
+        if (ok) setBerita((prev) => prev.filter((img) => img._id !== id));
     };
 
-    const beritaCards = berita.map((b) => (
-      <BeritaCard 
-        key={b._id} 
-        berita={b} 
-        destination={`${to}/${b._id}`} 
-        setBerita={setBerita} 
-        onDelete={handleDelete}/>
-      )
-    )
+    // Pastikan berita adalah array sebelum di-map
+    const beritaCards = Array.isArray(berita) ? berita.map((b) => (
+        <BeritaCard 
+            key={b._id} 
+            berita={b} 
+            destination={`${to}/${b._id}`} 
+            setBerita={setBerita} 
+            onDelete={handleDelete}
+        />
+    )) : [];
 
+    if (fetchLoading) return <Loading />;
 
-  return (
-    <div>
-        {isRateLimited && <RateLimitedUI/>}
-        {deleteLoading && 
-        <div className='min-h-screen bg-base-200 flex items-center justify-center'>
-        <LoaderIcon className="animate-spin size-10"/>
-         Loading...
-       </div>}
-       {!deleteLoading && <Paginator elements={beritaCards} rows={1} cols={3}/>}
-    </div>
-  );
+    return (
+        <div>
+            {isRateLimited && <RateLimitedUI />}
+            {deleteLoading && (
+                <div className='min-h-screen bg-base-200 flex items-center justify-center'>
+                    <LoaderIcon className="animate-spin size-10" />
+                    <p>Menghapus...</p>
+                </div>
+            )}
+            {!deleteLoading && <Paginator elements={beritaCards} rows={1} cols={3} />}
+        </div>
+    );
 };
 
 export default BeritaList;

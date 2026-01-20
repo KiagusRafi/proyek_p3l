@@ -42,8 +42,8 @@ export const login = async (req, res) => {
             if (err) throw err;
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: false, // Set true jika HTTPS
-                sameSite: 'Lax',
+                secure: true, // Set true jika HTTPS
+                sameSite: 'none',
                 maxAge: 3600000 
             }).json({ msg: 'Login berhasil', username: user.username });
         });
