@@ -15,15 +15,17 @@ const app = express();
 const PORT = process.env.PORT || 6767;
 // const __dirname = path.resolve()
 
+const allowedOrigin = process.env.NODE_ENV === "production" 
+    ? "https://p3lbackend.vercel.app"  // URL asli saat sudah live
+    : "http://localhost:5173";        // URL saat coding (development)
 
-if (process.env.NODE_ENV !== "production"){
-    app.use(
-        cors({
-            origin: "http://localhost:5173",
-            credentials: true
-        })
-    );
-}
+app.use(
+    cors({
+        origin: allowedOrigin,
+        credentials: true
+    })
+);
+
 
 // middlewares
 app.use(express.json());
