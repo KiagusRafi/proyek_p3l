@@ -13,10 +13,11 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 6767;
+const URL_FE = process.env.URL_FE
 // const __dirname = path.resolve()
 
 const allowedOrigin = process.env.NODE_ENV === "production" 
-    ? "https://p3lfrontend.vercel.app"  // URL asli saat sudah live
+    ? URL_FE  // URL asli saat sudah live
     : "http://localhost:5173";        // URL saat coding (development)
 
 app.use(
